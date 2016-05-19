@@ -13,7 +13,7 @@
     "clean:install": "npm set progress=false && npm install",
     "preclean:start": "npm run clean",
     "clean:start": "npm start",
-    "build": "rimraf dist && webpack --no-minimize && webpack",
+    "build": "rimraf dist && webpack",
     "prebuild:dev": "npm run clean:dist",
     "build:dev": "webpack --config config/webpack.dev.js --progress --profile --colors --display-error-details --display-cached",
     "prebuild:prod": "npm run clean:dist",
@@ -22,7 +22,7 @@
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
     "server:prod": "npm run build:prod && http-server dist --cors -o",
     "test": "karma start",
-    "lint": "eslint src/* --ext .js --config .eslintrc"
+    "lint": "npm run eslint src --config .eslintrc"
   },
   "repository": "lucalanca/my-shiny-module",
   "keywords": [],

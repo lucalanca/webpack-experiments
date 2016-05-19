@@ -1,13 +1,6 @@
 import { loadIfNeeded, SELECTOR } from './my-shiny-module-init';
 
-// import 'jasmine-jquery';
-
-describe('myShinyModule inti', () => {
-
-  beforeEach(() => {
-
-  });
-
+describe('myShinyModule', () => {
   it('should export `SELECTOR` constant', () => {
     expect(SELECTOR).to.equal('.js-my-shiny-module');
   });
