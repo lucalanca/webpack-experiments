@@ -81,6 +81,11 @@ module.exports = {
         test: /\.js$/,
         loaders: ['eslint'],
         exclude: /node_modules/
+      },
+
+      {
+        test: /\.(sass|scss)$/,
+        loader: 'stylelint'
       }
     ],
 
@@ -191,5 +196,8 @@ module.exports = {
   },
   eslint: {
     configFile: '.eslintrc'
+  },
+  stylelint: {
+    configFile: helpers.root('.stylelintrc')
   }
 };
