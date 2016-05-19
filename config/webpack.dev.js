@@ -86,6 +86,9 @@ module.exports = webpackMerge(commonConfig, {
       poll: 1000
     },
     outputPath: helpers.root('dist'),
+    stats: {
+      chunks: false
+    },
     open: true
   }
 });

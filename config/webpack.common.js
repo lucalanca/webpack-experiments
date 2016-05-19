@@ -74,16 +74,13 @@ module.exports = {
         loader: 'source-map-loader'
       },
 
-
+      /*
+       * Linting javascript files
+       */
       {
         test: /\.js$/,
-        loaders: ['babel?presets[]=es2015'],
+        loaders: ['eslint'],
         exclude: /node_modules/
-      },
-
-      {
-        test: /\.(scss|sass)$/,
-        loader: ExtractTextPlugin.extract('style', ['css', 'postcss', 'sass'])
       }
     ],
 
@@ -98,9 +95,14 @@ module.exports = {
      */
     loaders: [
       {
-        test: /\.js?$/,
-        exclude: /(node_modules)/,
-        loader: 'babel'
+        test: /\.js$/,
+        loaders: ['babel?presets[]=es2015'],
+        exclude: /node_modules/
+      },
+
+      {
+        test: /\.(scss|sass)$/,
+        loader: ExtractTextPlugin.extract('style', ['css', 'postcss', 'sass'])
       }
     ]
   },
@@ -186,5 +188,8 @@ module.exports = {
         safe: true
       })
     ];
+  },
+  eslint: {
+    configFile: '.eslintrc'
   }
 };

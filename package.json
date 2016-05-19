@@ -4,6 +4,7 @@
   "description": "",
   "main": "dist/my-shiny-module.js",
   "scripts": {
+    "eslint": "eslint",
     "rimraf": "rimraf",
     "webpack": "webpack",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
@@ -20,7 +21,8 @@
     "server": "npm run server:dev",
     "server:dev": "webpack-dev-server --config config/webpack.dev.js --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
     "server:prod": "npm run build:prod && http-server dist --cors -o",
-    "test": "karma start"
+    "test": "karma start",
+    "lint": "eslint src/* --ext .js --config .eslintrc"
   },
   "repository": "lucalanca/my-shiny-module",
   "keywords": [],
@@ -31,7 +33,7 @@
   "devDependencies": {
     "autoprefixer": "^6.3.6",
     "babel-core": "^6.4.5",
-    "babel-eslint": "^4.1.4",
+    "babel-eslint": "^6.0.4",
     "babel-loader": "^6.2.2",
     "babel-plugin-add-module-exports": "^0.1.2",
     "babel-preset-es2015": "^6.3.13",
@@ -41,9 +43,10 @@
     "coveralls": "^2.11.4",
     "css-loader": "^0.23.1",
     "cssnano": "^3.6.2",
-    "eslint": "^1.4.1",
+    "eslint": "^2.10.2",
+    "eslint-config-airbnb-base": "^3.0.1",
     "eslint-loader": "^1.3.0",
-    "eslint-plugin-babel": "^3.1.0",
+    "eslint-plugin-import": "^1.8.0",
     "extract-text-webpack-plugin": "^1.0.1",
     "html-webpack-plugin": "^2.17.0",
     "http-server": "^0.9.0",
@@ -86,6 +89,7 @@
   "license": "MIT",
   "dependencies": {
     "console-polyfill": "^0.2.2",
+    "eslint": "^1.10.3",
     "jquery": "^2.2.3"
   }
 }
