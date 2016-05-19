@@ -8,6 +8,11 @@ var CopyWebpackPlugin = require('copy-webpack-plugin');
 var HtmlWebpackPlugin = require('html-webpack-plugin');
 var ExtractTextPlugin = require("extract-text-webpack-plugin");
 
+
+/* Postcss Plugins */
+var autoprefixer = require('autoprefixer');
+var cssnano      = require('cssnano');
+
 module.exports = {
 
   /*
@@ -77,8 +82,8 @@ module.exports = {
       },
 
       {
-        test: /\.scss$/,
-        loader: ExtractTextPlugin.extract('style', 'css', 'sass')
+        test: /\.(scss|sass)$/,
+        loader: ExtractTextPlugin.extract('style', ['css', 'postcss', 'sass'])
       }
     ],
 
@@ -171,5 +176,15 @@ module.exports = {
      * See: https://github.com/webpack/extract-text-webpack-plugin
      */
     new ExtractTextPlugin("[name].css")
-  ]
+  ],
+  postcss: function () {
+    return [
+      autoprefixer({
+        browsers: ['last 2 versions']
+      }),
+      cssnano({
+        safe: true
+      })
+    ];
+  }
 };

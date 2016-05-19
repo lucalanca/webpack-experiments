@@ -1,3 +1,6 @@
 body {
   background: yellow;
+  transform: scale(.3);
+  display: flex;          // test autoprefixer
+  width: calc(2 * 100px); // test cssnano
 }
