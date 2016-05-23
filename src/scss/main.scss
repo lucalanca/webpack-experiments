@@ -1,11 +1,33 @@
 body {
-  background: yellow;
-  transform: scale(0.3);
-  display: flex;          // test autoprefixer
-  width: calc(2 * 100px); // test cssnano
+  // background: yellow;
+  // transform: scale(0.9);
+  // display: flex;          // test autoprefixer
+  // flex-direction: column;
+  // width: calc(2 * 100px); // test cssnano
   // background: #3d; // uncommment this to see if stylelint is working
 }
 
 #not-allowed-bro {
   color: red;
+}
+
+.l-grid-cell {
+  display: inline-block;
+}
+
+.l-one-whole {
+  width: 100%;
+}
+
+img {
+  max-width: 100%;
+}
+
+body,
+html {
+  height: 100%;
+}
+
+body {
+  overflow-y: scroll;
 }

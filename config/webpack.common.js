@@ -77,11 +77,11 @@ module.exports = {
       /*
        * Linting javascript files
        */
-      {
-        test: /\.js$/,
-        loaders: ['eslint'],
-        exclude: /node_modules/
-      },
+      // {
+      //   test: /\.js$/,
+      //   loaders: ['eslint'],
+      //   exclude: /node_modules/
+      // },
 
       {
         test: /\.(sass|scss)$/,
@@ -108,6 +108,15 @@ module.exports = {
       {
         test: /\.(scss|sass)$/,
         loader: ExtractTextPlugin.extract('style', ['css', 'postcss', 'sass'])
+
+      },
+      { test: /\.jade$/, loader: 'jade' },
+      {
+        test: /.*\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'resize-image?sizes[]=200w,sizes[]=500w,sizes[]=900w,sizes[]=1200w&placeholder=20&blur=90',
+          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+        ]
       }
     ]
   },
@@ -138,9 +147,13 @@ module.exports = {
      * https://webpack.github.io/docs/list-of-plugins.html#commonschunkplugin
      * See: https://github.com/webpack/docs/wiki/optimization#multi-page-app
      */
-    new webpack.optimize.CommonsChunkPlugin({
-      name: helpers.reverse(['polyfills', 'vendor'])
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   name: helpers.reverse(['polyfills', 'vendor'])
+    // }),
+    new webpack.optimize.CommonsChunkPlugin(
+      /* chunkName= */"vendor",
+      /* filename= */"vendor.bundle.js"
+    ),
 
     /*
      * Plugin: CopyWebpackPlugin
@@ -154,7 +167,7 @@ module.exports = {
       {
         from: 'src/index.html',
         to: 'index.html'
-      },
+      }
     ]),
 
 
@@ -167,8 +180,8 @@ module.exports = {
      * See: https://github.com/ampedandwired/html-webpack-plugin
      */
     new HtmlWebpackPlugin({
-      template: 'src/index.html',
-      chunksSortMode: helpers.packageSort(['polyfills', 'vendor', 'main']),
+      template: 'src/index.jade',
+      chunksSortMode: helpers.packageSort(['vendor', 'polyfills', 'main']),
       hash: true,
       inject: true
     }),
