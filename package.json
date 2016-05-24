@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/my-shiny-module.js",
   "scripts": {
-    "eslint": "eslint -c .eslintrc src/ --fix",
+    "eslint": "eslint -c .eslintrc src/",
     "rimraf": "rimraf",
     "webpack": "webpack",
     "clean": "npm cache clean && npm run rimraf -- node_modules doc coverage dist",
