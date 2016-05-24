@@ -115,7 +115,7 @@ module.exports = {
         test: /.*\.(gif|png|jpe?g|svg)$/i,
         loaders: [
           'resize-image?sizes[]=200w,sizes[]=500w,sizes[]=900w,sizes[]=1200w&placeholder=20&blur=90',
-          'image-webpack?{progressive:true, optimizationLevel: 7, interlaced: false, pngquant:{quality: "65-90", speed: 4}}'
+          'image-webpack?{progressive:true,optimizationLevel:7,interlaced:false}'
         ]
       }
     ]
@@ -212,5 +212,21 @@ module.exports = {
   },
   stylelint: {
     configFile: helpers.root('.stylelintrc')
+  },
+  imageWebpackLoader: {
+    pngquant:{
+      quality: "65-90",
+      speed: 4
+    },
+    svgo:{
+      plugins: [
+        {
+          removeViewBox: false
+        },
+        {
+          removeEmptyAttrs: false
+        }
+      ]
+    }
   }
 };

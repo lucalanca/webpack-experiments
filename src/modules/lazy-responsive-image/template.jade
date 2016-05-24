@@ -1,4 +1,3 @@
 mixin lazy-responsive-image(path)
-  - var anotherResponsiveImage = JSON.parse(require('images/porto.jpeg'))
-  //- pre= anotherResponsiveImage
-  img.lazyload.blur-up(src=anotherResponsiveImage.placeholder, data-sizes="200w,500w,900w,1200w", data-srcset=anotherResponsiveImage.srcset)
+  - var anotherResponsiveImage = JSON.parse(require('./images/' + path))
+  img.lazyload(src=anotherResponsiveImage.placeholder, data-sizes="200w,500w,900w,1200w", data-srcset=anotherResponsiveImage.srcset)

@@ -6,11 +6,11 @@ html(lang="en")
     include ./modules/lazy-responsive-image/template.jade
     
     .l-grid
-      .l-grid-cell.l-one-whole
-        +lazy-responsive-image("images/joel.jpg")
-      .l-grid-cell.l-one-whole
-        +lazy-responsive-image("images/porto.jpeg")
-      .l-grid-cell.l-one-whole
-        +lazy-responsive-image("images/joel.jpg")
-      .l-grid-cell.l-one-whole
-        +lazy-responsive-image("images/porto.jpeg")
+      .l-grid-cell.l-one-half
+        +lazy-responsive-image("joel.jpg")
+      .l-grid-cell.l-one-half
+        +lazy-responsive-image("porto.jpeg")
+      .l-grid-cell.l-one-half
+        img.lazyload(data-src="images/joel.jpg")
+      .l-grid-cell.l-one-half
+        img.lazyload(data-src="images/porto.jpeg")
