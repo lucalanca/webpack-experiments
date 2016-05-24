@@ -103,31 +103,19 @@ module.exports = {
 
   module: {
     preLoaders: [
-      {
-        test: /\.js$/,
-        loader: 'source-map-loader',
-        exclude: /node_modules/,
-      },
-      {
-        test: /\.(scss|sass)$/,
-        loader: 'stylelint',
-      },
-      {
-        test: /\.js$/,
-        loader: 'eslint',
-        exclude: /node_modules/,
-      },
+      { test: /\.js$/, loader: 'source-map', exclude: /node_modules/ },
+      { test: /\.scss$/, loader: 'stylelint', exclude: /node_modules/ },
+      { test: /\.js$/, loader: 'eslint', exclude: /node_modules/ },
     ],
 
     loaders: [
-      {
-        test: /\.js$/,
+      { test: /\.js$/,
         loaders: ['babel?presets[]=es2015'],
         exclude: /node_modules/,
       },
       {
-        test: /\.(scss|sass)$/,
-        loader: ExtractTextPlugin.extract(['css', 'postcss', 'sass', 'stylelint']),
+        test: /\.scss$/,
+        loader: ExtractTextPlugin.extract(['css', 'postcss', 'sass']),
       },
     ],
   },
