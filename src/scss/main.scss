@@ -1,0 +1,11 @@
+body {
+  background: yellow;
+  transform: scale(0.3);
+  display: flex;          // test autoprefixer
+  width: calc(2 * 100px); // test cssnano
+  // background: #3d; // uncommment this to see if stylelint is working
+}
+
+#not-allowed-bro {
+  color: red;
+}
