@@ -1,5 +1,3 @@
-'use strict';
-
 const path = require('path');
 const webpack = require('webpack');
 
@@ -103,12 +101,21 @@ module.exports = {
         loader: 'source-map-loader',
         exclude: /node_modules/,
       },
+      {
+        test: /\.(scss|sass)$/,
+        loader: 'stylelint',
+      },
+      {
+        test: /\.js$/,
+        loader: 'eslint',
+        exclude: /node_modules/,
+      },
     ],
 
     loaders: [
       {
         test: /\.js$/,
-        loaders: ['babel?presets[]=es2015', 'eslint'],
+        loaders: ['babel?presets[]=es2015'],
         exclude: /node_modules/,
       },
       {
