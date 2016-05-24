@@ -117,6 +117,10 @@ module.exports = {
         test: /\.scss$/,
         loader: ExtractTextPlugin.extract(['css', 'postcss', 'sass']),
       },
+      {
+        test: /\.jade$/,
+        loaders: ['jade']
+      },
     ],
   },
 
