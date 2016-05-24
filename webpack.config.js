@@ -1,3 +1,5 @@
+'use strict';
+
 const path = require('path');
 const webpack = require('webpack');
 
@@ -15,8 +17,8 @@ const WebpackMd5Hash = require('webpack-md5-hash');
 
 
 /* Postcss Plugins */
-const autoprefixer = require('autoprefixer');
-const cssnano = require('cssnano');
+const autoprefixer = require('autoprefixer')({ browsers: ['last 2 versions'] });
+const cssnano = require('cssnano')({ safe: true });
 
 const SKELETON_ENV = process.env.SKELETON_ENV || 'development';
 let DEVTOOL;
@@ -54,6 +56,11 @@ switch (SKELETON_ENV) {
       new CompressionPlugin({
         regExp: /\.css$|\.html$|\.js$|\.map$/,
         threshold: 2 * 1024,
+      }),
+      new OccurenceOrderPlugin(true),
+      new CommonsChunkPlugin({
+        name: ['vendor'],
+        minChunks: Infinity,
       }),
     ];
     break;
@@ -126,11 +133,6 @@ module.exports = {
   },
 
   plugins: [
-    new OccurenceOrderPlugin(true),
-    new CommonsChunkPlugin({
-      name: ['vendor'],
-      minChunks: Infinity,
-    }),
     new HtmlWebpackPlugin({
       template: 'src/index.html',
       hash: true,
@@ -139,34 +141,5 @@ module.exports = {
     }),
     new ExtractTextPlugin('[name].css'),
   ].concat(ADDITIONAL_PLUGINS),
-  postcss() {
-    return [
-      autoprefixer({
-        browsers: ['last 2 versions'],
-      }),
-      cssnano({
-        safe: true,
-      }),
-    ];
-  },
-  eslint: {
-    configFile: '.eslintrc',
-  },
-  stylelint: {
-    configFile: path.resolve(__dirname, '.stylelintrc'),
-  },
-  devServer: {
-    port: 3000,
-    host: 'localhost',
-    historyApiFallback: true,
-    watchOptions: {
-      aggregateTimeout: 300,
-      poll: 1000,
-    },
-    outputPath: path.resolve(__dirname, 'dist'),
-    stats: {
-      chunks: false,
-    },
-    open: true,
-  },
+  postcss() { return [autoprefixer, cssnano]; },
 };

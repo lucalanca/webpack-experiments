@@ -7,5 +7,4 @@ export function sum(a, b) {
   return a + b;
 }
 
-console.log('my shiny module is running');
 export const FOO = 'bar';

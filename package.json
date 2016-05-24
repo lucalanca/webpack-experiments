@@ -20,7 +20,7 @@
     "build:prod": "SKELETON_ENV=production webpack --progress --profile --colors --display-error-details --display-cached --bail",
     "start": "npm run server",
     "server": "npm run server:dev",
-    "server:dev": "SKELETON_ENV=development webpack-dev-server --inline --progress --profile --colors --watch --display-error-details --display-cached --content-base src/",
+    "server:dev": "SKELETON_ENV=development webpack-dev-server --inline --progress --no-info --quiet --profile --colors --watch --open --content-base dist/ ",
     "server:prod": "npm run build:prod && http-server dist --cors -o",
     "test": "karma start",
     "lint": "npm run eslint src --config .eslintrc"
